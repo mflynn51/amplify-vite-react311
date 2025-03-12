@@ -37,4 +37,11 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ center, zoom }) => {
   return <div ref={mapContainerRef} style={{ height: '500px', width: '100%' }} />;
 };
 
+var circle = L.circle([34.049, -118.252], {
+  color: 'red',
+  fillColor: '#f03',
+  fillOpacity: 0.5,
+  radius: 500
+}).addTo(map);
+
 export default LeafletMap;
