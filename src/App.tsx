@@ -32,9 +32,7 @@ function App() {
   return (
     <main>
       <h1>My todos</h1>
-      <div className="App">
-      <LeafletMap center={mapCenter} zoom={mapZoom} />
-      </div>
+      
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => <li 
@@ -42,6 +40,9 @@ function App() {
           key={todo.id}>{todo.content}</li>
         )}
       </ul>
+      <div className="App">
+      <LeafletMap center={mapCenter} zoom={mapZoom} />
+      </div>
       <button onClick={signOut}>Sign out</button>
       <div>
         🥳 App successfully boned. Try grabbing a boob.
