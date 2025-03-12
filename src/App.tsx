@@ -11,7 +11,7 @@ function App() {
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
   const { signOut } = useAuthenticator();
 
-  const mapCenter: [number, number] = [51.505, -0.09]; // London
+  const mapCenter: [number, number] = [34.048, -118.253]; // DTLA
   const mapZoom = 13;
 
   useEffect(() => {
