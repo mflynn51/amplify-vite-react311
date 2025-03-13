@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useEffect, useState } from "react";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
@@ -14,8 +14,7 @@ function App() {
 
   const mapCenter: [number, number] = [34.048, -118.253]; // DTLA
   const mapZoom = 13;
-  const circleCenter: [number, number] = [34, -118]; // Example circle center
-  const circleRadius = 500; // Example circle radius (meters)
+  
 
   useEffect(() => {
     client.models.Todo.observeQuery().subscribe({
@@ -47,8 +46,7 @@ function App() {
         <LeafletMap
           center={mapCenter} 
           zoom={mapZoom} 
-          circleCenter={circleCenter}
-          circleRadius={circleRadius}
+          
         />
       </div>
       <button onClick={signOut}>Sign out</button>

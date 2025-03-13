@@ -1,15 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet.css'; // Import Leaflet's CSS
 
 interface LeafletMapProps {
-  center: [number, number];
+  center: [number, number]; // Latitude and longitude
   zoom: number;
-  circleCenter?: [number, number]; // Optional circle center
-  circleRadius?: number; // Optional circle radius
 }
 
-const LeafletMap: React.FC<LeafletMapProps> = ({ center, zoom, circleCenter, circleRadius }) => {
+const LeafletMap: React.FC<LeafletMapProps> = ({ center, zoom }) => {
   const mapRef = useRef<L.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
 
@@ -22,20 +20,13 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ center, zoom, circleCenter, cir
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(mapRef.current);
 
-    // Add circle if circleCenter and circleRadius are provided
-    if (circleCenter && circleRadius) {
-      L.circle(circleCenter, {
-        radius: circleRadius,
-        color: 'red',
-      }).addTo(mapRef.current);
-    }
-
+    // Clean up the map instance when the component unmounts
     return () => {
       if (mapRef.current) {
         mapRef.current.remove();
       }
     };
-  }, [center, zoom, circleCenter, circleRadius]);
+  }, [center, zoom]);
 
   useEffect(() => {
     if(mapRef.current){
