@@ -13,6 +13,8 @@ function App() {
 
   const mapCenter: [number, number] = [34.048, -118.253]; // DTLA
   const mapZoom = 13;
+  const circleCenter: [number, number] = [34, -118]; // Example circle center
+  const circleRadius = 500; // Example circle radius (meters)
 
   useEffect(() => {
     client.models.Todo.observeQuery().subscribe({
@@ -41,7 +43,12 @@ function App() {
         )}
       </ul>
       <div className="App">
-      <LeafletMap center={mapCenter} zoom={mapZoom} />
+        <LeafletMap
+          center={mapCenter} 
+          zoom={mapZoom} 
+          circleCenter={circleCenter}
+          circleRadius={circleRadius}
+        />
       </div>
       <button onClick={signOut}>Sign out</button>
       <div>
